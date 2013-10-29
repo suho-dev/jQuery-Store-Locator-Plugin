@@ -665,17 +665,6 @@ $.fn.storeLocator = function(options) {
                 storenum = settings.storeLimit-1;
               }
 
-              //Add origin marker if the setting is set
-              if(settings.originMarker === true && settings.fullMapStart === false){
-                var originPoint = new google.maps.LatLng(orig_lat, orig_lng);  
-                var marker = new google.maps.Marker({
-                    position: originPoint,
-                    map: map,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/'+ settings.originpinColor +'-dot.png',
-                    draggable: false
-                  });
-              }
-              
               //Add markers and infowindows loop
               for(var y = 0; y <= storenum; y++) { 
                 var letter = String.fromCharCode("A".charCodeAt(0) + y);
@@ -688,6 +677,17 @@ $.fn.storeLocator = function(options) {
                 }
                 //Pass variables to the pop-up infowindows
                 create_infowindow(marker);
+              }
+
+              //Add origin marker if the setting is set
+              if(settings.originMarker === true && settings.fullMapStart === false){
+                var originPoint = new google.maps.LatLng(orig_lat, orig_lng);
+                var marker = new google.maps.Marker({
+                    position: originPoint,
+                    map: map,
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/'+ settings.originpinColor +'-dot.png',
+                    draggable: false
+                  });
               }
 
               //Center and zoom if no origin or zoom was provided
