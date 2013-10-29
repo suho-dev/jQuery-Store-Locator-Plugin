@@ -8,6 +8,11 @@
 (function($){
 $.fn.storeLocator = function(options) {
 
+  var rootPath = "";
+  if (typeof suho !== 'undefined' && suho.composerComponentBasePath !== 'undefined') {
+      rootPath = suho.composerComponentBasePath + "/StoreLocator/";
+  }
+
   var settings = $.extend( {
       'mapDiv': 'map',
       'listDiv': 'loc-list',
@@ -44,10 +49,10 @@ $.fn.storeLocator = function(options) {
       'loading': false,
       'loadingDiv': 'loading-map',
       'featuredLocations': false,
-      'infowindowTemplatePath': 'templates/infowindow-description.html',
-      'listTemplatePath': 'templates/location-list-description.html',
-      'KMLinfowindowTemplatePath': 'templates/kml-infowindow-description.html',
-      'KMLlistTemplatePath': 'templates/kml-location-list-description.html',
+      'infowindowTemplatePath': rootPath + 'templates/infowindow-description.html',
+      'listTemplatePath': rootPath + 'templates/location-list-description.html',
+      'KMLinfowindowTemplatePath': rootPath + 'templates/kml-infowindow-description.html',
+      'KMLlistTemplatePath': rootPath + 'templates/kml-location-list-description.html',
       'callbackBeforeSend': null,
       'callbackComplete': null,
       'callbackSuccess': null,
